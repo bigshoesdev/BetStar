@@ -32,7 +32,7 @@
 	"express": "~4.5.1",
 	"md5": "^2.1.0",
 	"method-override": "~2.0.2",
-	"mongoose": "^4.4.10",
+	"mongoose": "^5.7.5",
 	"mysql": "^2.10.2",
 	"node-mongo-seeds": "^2.2.7",
 	"nodemailer": "^4.4.2",
