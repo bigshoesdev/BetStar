@@ -1,0 +1,57 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Results</h1>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div>
+        <div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Results
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover" id="scoresTable">
+                            <thead>
+                                <tr>
+                                    <th>Game No</th>
+                                    <th>Home</th>
+                                    <th>Away</th>
+                                    <th>Home Score</th>
+                                    <th>Away Score</th>
+                                    <th>Week</th>
+                                    <th>Check</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="game in games track by $index" data-id = "{{game._id}}">
+                                    <td>{{game.game_no}}</td>
+                                    <td>{{game.home_team}}</td>
+                                    <td>{{game.away_team}}</td>
+                                    <td>{{game.home_score}}</td>
+                                    <td>{{game.away_score}}</td>
+                                    <td>{{game.week_no}}</td>
+                                    <td>
+                                        <a class="check btn btn-{{game.checked ? 'success': 'danger'}} btn-circle" href="javascript:;">
+                                            <i class="check fa fa-{{game.checked ? 'check': 'times'}}"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+        <div class="form-group text-center">
+            <button type="button" class="btn btn-success" ng-click="onDraw()" >Draw</button>
+        </div>
+    </div>
+</div>

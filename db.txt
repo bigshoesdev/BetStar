@@ -1,0 +1,79 @@
+{
+	"_id" : ObjectId("5afacb911b0f561ff0a22384"),
+	"user_id" : "admin",
+	"user_email" : "admin@admin.com",
+	"user_password" : "852f1bea32342b0ea25a1a539786aedd",
+	"user_token" : "^g5~#1*9*xj*yz97$l4knz8lzysj2z",
+	"user_createdat" : ISODate("2018-05-15T11:59:13.000Z"),
+	"user_status" : true,
+	"user_avatar" : "",
+	"user_staff" : "",
+	"user_phonenumber" : "123123",
+	"user_city" : "asdfasdf",
+	"user_address" : "asdfsdaf",
+	"user_role" : "admin",
+	"user_birthday" : ISODate("2018-05-02T00:00:00.000Z"),
+	"user_lastname" : "asdfasdf",
+	"user_firstname" : "asdfasdf",
+	"__v" : 0
+}
+
+{
+	"_id" : ObjectId("5afacbfa1b0f561ff0a22385"),
+	"user_id" : "staff",
+	"user_email" : "staff@staff.com",
+	"user_password" : "852f1bea32342b0ea25a1a539786aedd",
+	"user_token" : "#w~4l29l6m#js0xx7#!7ocmg&lm4#h",
+	"user_createdat" : ISODate("2018-05-15T12:00:58.000Z"),
+	"user_status" : true,
+	"user_avatar" : "",
+	"user_staff" : "",
+	"user_phonenumber" : "asdfasdf",
+	"user_city" : "asdfasdf",
+	"user_address" : "asdfasdf",
+	"user_role" : "staff",
+	"user_birthday" : ISODate("2018-05-14T15:00:00.000Z"),
+	"user_lastname" : "asdf",
+	"user_firstname" : "asdf",
+	"__v" : 0
+}
+
+{
+	"_id" : ObjectId("5afacc051b0f561ff0a22386"),
+	"user_id" : "agent",
+	"user_email" : "agent@agent.com",
+	"user_password" : "852f1bea32342b0ea25a1a539786aedd",
+	"user_token" : "haqb8ww7%c3ayq8p6d^kbljzkhiuaa",
+	"user_createdat" : ISODate("2018-05-15T12:01:09.000Z"),
+	"user_status" : true,
+	"user_avatar" : "",
+	"user_staff" : "",
+	"user_phonenumber" : "asdfasdf",
+	"user_city" : "asdfasdf",
+	"user_address" : "asdfasdf",
+	"user_role" : "agent",
+	"user_birthday" : ISODate("2018-05-14T15:00:00.000Z"),
+	"user_lastname" : "asdf",
+	"user_firstname" : "asdf",
+	"__v" : 0
+}
+
+{
+	"_id" : ObjectId("5afacc0f1b0f561ff0a22387"),
+	"user_id" : "user",
+	"user_email" : "user@user.com",
+	"user_password" : "852f1bea32342b0ea25a1a539786aedd",
+	"user_token" : "jv0!y9e13hh~v&rz6eqcw79m021wu^",
+	"user_createdat" : ISODate("2018-05-15T12:01:19.000Z"),
+	"user_status" : true,
+	"user_avatar" : "",
+	"user_staff" : "",
+	"user_phonenumber" : "asdfasdf",
+	"user_city" : "asdfasdf",
+	"user_address" : "asdfasdf",
+	"user_role" : "user",
+	"user_birthday" : ISODate("2018-05-14T15:00:00.000Z"),
+	"user_lastname" : "asdf",
+	"user_firstname" : "asdf",
+	"__v" : 0
+}

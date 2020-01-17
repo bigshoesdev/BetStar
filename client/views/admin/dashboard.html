@@ -1,0 +1,47 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+        <stats number="{{bet_cnt}}" size="4" comments="Total Bets" colour="primary" type="thumbs-up" nextpath = "bet.admin_bets"></stats>
+        <stats number="{{agent_cnt}}" size="4" comments="Total Agents" colour="red" type="smile-o" nextpath = "bet.admin_agents"></stats>
+        <stats number="{{terminal_cnt}}" size="4" comments="Total Terminals" colour="yellow" type="print" nextpath = "bet.admin_terminals"></stats>
+
+    </div>
+
+    <!-- /.panel -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Finance Dashboard for the Week
+                </div>
+                <div class="panel-body">
+                    <stats number="{{total_summary.total_sale}}" size="3" comments="Total Sales Amount" colour="red" type="money" nextpath = "bet.admin_betresults"></stats>
+                    <stats number="{{total_summary.total_payable}}" size="3" comments="Total Commission paid to Agents" colour="primary" type="gift" nextpath = "bet.admin_betresults"></stats>
+                    <stats number="{{total_summary.total_winning}}" size="3" comments="Winnings paid to Agents" colour="yellow" type="shopping-cart" nextpath = "bet.admin_betresults"></stats>
+                    <stats number="{{total_summary.status == 'green' ?'Win' : 'Loss'}}" size="3" comments="Balance Profit or Loss" colour="{{total_summary.status}}" type="trophy" nextpath = "bet.admin_betresults"></stats>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Void Bets Dashboard for the Week
+                </div>
+                <div class="panel-body">
+                    <stats number="{{deleterequest_cnt}}" size="4" comments="Total Requests" colour="green" type="trash-o" nextpath = "bet.admin_deletebet"></stats>
+                    <stats number="{{approved_cnt}}" size="4" comments="Aprroved Requests" colour="primary" type="check" nextpath = "bet.admin_voidbet"></stats>
+                    <stats number="{{dismiss_cnt}}" size="4" comments="Dismissed Requests" colour="red" type="times" nextpath = "bet.admin_voidbet"></stats>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>

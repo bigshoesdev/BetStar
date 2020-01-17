@@ -1,0 +1,113 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Modify Personal Data</h1>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Modify Personal Data
+                </div>
+                <div class="panel-body">
+                    <div class="register-box-body">
+
+                        <div class="form-group has-feedback" id="profile-firstname">
+                            <input name="firstname" type="text" id="txtFirstName" class="form-control" placeholder="First Name" ng-model="user_info.user_firstname"
+                                required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-first-name"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-pencil  form-control-feedback"></span>
+                        </div>
+
+                        <div class="form-group has-feedback" id="profile-lastname">
+                            <input name="lastname" type="text" id="txtLastName" class="form-control" placeholder="Last Name" ng-model="user_info.user_lastname"
+                                required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-last-name"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-pencil  form-control-feedback"></span>
+                        </div>
+
+                        <div class="form-group has-feedback" id="profile-email">
+                            <input name="email" type="email" ng-model="user_info.user_email" id="email1" class="form-control" placeholder="Email" required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-email"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+
+                        <div class="form-group has-feedback" id="profile-birthday">
+                            <input name="birthday" type="date" id="textbirthday" ng-model="user_info.user_birthday" class="form-control" placeholder="Date Of Birth">
+                            <span class="help-block">
+                                <strong id="profile-errors-birthday"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+                        </div>
+
+                        <div class="form-group has-feedback" id="profile-address">
+                            <input name="address" type="text" id="textaddress" ng-model="user_info.user_address" class="form-control" placeholder="Address"
+                                required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-address"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback" id="profile-city">
+                            <input name="city" type="text" id="txtcity" ng-model="user_info.user_city" class="form-control" placeholder="City" required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-city"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-th  form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback" id="profile-phonenumber">
+                            <input name="phonenumber" ng-model="user_info.user_phonenumber" type="text" id="cell" class="form-control" placeholder="Phone Number"
+                                required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-phone-number"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback" id="profile-name">
+                            <input name="name" type="text" ng-model="user_info.user_id" id="username" class="form-control" placeholder="User Name" required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-name"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback" id="register-password">
+                            <input name="password" type="password" ng-model="user_info.user_password" id="newPass" class="form-control" placeholder="Password"
+                                required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-password"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input name="password_confirmation" type="password" ng-model="user_info.user_retypepassword" id="confPass" class="form-control"
+                                placeholder="Retype password" required="">
+                            <span class="help-block">
+                                <strong id="profile-errors-password-confirmation"></strong>
+                            </span>
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <div class="col-xs-6">
+                                <button id="btnSubmit" type="submit" ng-click="onUpdate()" class="btn btn-primary btn-block btn-flat">Update</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <button id="btnCancel" type="button" ng-click="onCancel()" class="btn btn-danger btn-block btn-flat" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

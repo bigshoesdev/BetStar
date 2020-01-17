@@ -1,0 +1,202 @@
+<div>
+    <div class="row">
+        <div>
+            <h1 class="page-header">Stake</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div>
+        <div class="form-group row">
+            <div class="col-md-2 margin-top-20 no-padding">
+                <div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionType" value="Nap/Perm" ng-model="gameType" ng-change="onChangeGameType()">Nap Or Perm
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionType" value="Group" ng-model="gameType" ng-change="onChangeGameType()">Grouping
+                        </label>
+                    </div>
+                </div>
+
+                <hr class="dl-horizontal">
+                <div id="under_naporperm" ng-show="gameType == 'Nap/Perm'">
+                    Under
+                    <div class="checkbox" ng-repeat="undername in unders">
+                        <label>
+                            <input type="checkbox" name="optionUnder" ng-model="under[undername]" ng-change="onChangeUnder(undername)">U{{undername}}
+                        </label>
+                    </div>
+                </div>
+                <div id="under_group" class="row" ng-show="gameType == 'Group'">
+                    <div class="col col-md-6">
+                        Under
+                        <div class="radio" ng-repeat="undername in unders">
+                            <label>
+                                <input type="radio" name="optionUnder" ng-value="undername" ng-model="groupUnder" ng-change="onChangeUnder(undername)">U{{undername}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        Group
+                        <div class="radio" ng-repeat="groupname in groups track by $index" ng-show="groupCnt > $index">
+                            {{groupname}}
+                            <input class="group{{$index + 1}} groupnum" type="number" min="0" max="6" ng-model="groupVals[$index]" ng-click="onSelectGroup($index)"
+                                ng-change="onChangeGroupVal($index)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-8">
+                <div ng-repeat="game in games track by $index" class="col-md-3 game-fixture {{data[game.game_no]}}" ng-click="toggleMatch(game.game_no)"
+                    data-id="{{game.game_no}}" id="fixture_{{game.game_no}}">
+                    <span style="margin:auto">{{game.game_no}}</span>
+                </div>
+            </div>
+
+            <div class="col col-md-2" hidden>
+
+                <div class="panel-heading">
+                    Select Under
+                </div>
+                <div class="panel-body">
+                    <div class="game-under {{under[3]}}" id="under_3" ng-click="toggleunder(3)">
+                        <label>
+                            U3
+                        </label>
+                    </div>
+                    <div class="game-under {{under[4]}}" id="under_4" ng-click="toggleunder(4)">
+                        <label>
+                            U4
+                        </label>
+                    </div>
+                    <div class="game-under {{under[5]}}" id="under_5" ng-click="toggleunder(5)">
+                        <label>
+                            U5
+                        </label>
+                    </div>
+                    <div class="game-under {{under[6]}}" id="under_6" ng-click="toggleunder(6)">
+                        <label>
+                            U6
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-2">
+                <!-- <div>
+                    <label>Your Wallet: #{{wallet}}</label>
+                </div> -->
+                <div ng-repeat="gamestr in gameliststr">
+                    <label style="word-wrap: break-word;">{{gamestr}}</label><br>
+                </div>
+                <div class="panel">
+                    <label>Select Odd:</label>
+                    <div>
+                        <div class="radio" ng-repeat="option in cur_week.options track by $index" ng-show="option.status != 'false'">
+                            <label>
+                                <input type="radio" name="oddRadio" ng-model="odd" ng-value="option.name" ng-click="onChangeOdd(option.name)">{{option.name}}
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label>Stake Amount:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="stake_amount">
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success" ng-click="onStake()" style="width: 100%">
+                        <i class="fa fa-check">Stake</i>
+                    </button>
+                </div>
+                <div class="panel panel-yellow" style="font-size: 12px">
+                    <div class="panel-heading">
+                        <h3 class="panel-title inline-block">
+                            Coupon Info
+                        </h3>
+                    </div>
+                    <div style="margin: 10px 0px">
+                        <label style="margin: 4px 7px;">Max. on 3 =
+                            <span style="color: red">NGN 50000</span>
+                        </label>
+                        <label style="margin: 4px 7px;">Max. on 4 =
+                            <span style="color: red">NGN 50000</span>
+                        </label>
+                        <label style="margin: 4px 7px;">Max. on 5 =
+                            <span style="color: red">NGN 50000</span>
+                        </label>
+                        <label style="margin: 4px 7px;">Max. on 6 =
+                            <span style="color: red">NGN 50000</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.panel -->
+</div>
+
+<div id="printableArea" style="display:none">
+    <div>
+        <label>TSN:{{ticket_no}}</label>
+    </div>
+    <div style="text-align:center;font-size: 14px;">
+        <label>Bet2star</label>
+    </div>
+    <div style="text-align:center;">
+        <img ui-sref="bet.user_dashboard" style="width : 230px; margin:10px" src="images/logo.png" alt="logo">
+    </div>
+    <div style="text-align:center;font-size: 14px;">
+        <label>Where Stars Play</label>
+    </div>
+    <div style="text-align: center;font-size: 26px;font-family: monospace;">
+        <label>Week No:{{cur_week.week_no}}</label>
+    </div>
+    <div>
+        <table style="border: 0px !important">
+            <tr>
+                <td>
+                    MatchPlayed:
+                </td>
+                <td>
+                    {{bet_time.toLocaleString()}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ClosingTime:
+                </td>
+                <td>
+                    {{close_at.toLocaleString()}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Validity:
+                </td>
+                <td>
+                    {{validity.toLocaleString()}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <label style="white-space: nowrap;overflow: hidden">
+            ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        </label>
+    </div>
+    <div>
+        <label>ID-{{resultBet.bet_id}}/{{understr}}/{{odd}}</label>
+    </div>
+    <div>
+        <label>Game: {{gameString}}</label>
+    </div>
+    <div>
+        <label>#{{stake_amount}} staked</label>
+    </div>
+</div>

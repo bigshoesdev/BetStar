@@ -1,0 +1,203 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Group Game</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="form-group">
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Select Under
+                    </div>
+                    <div class="panel-body">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="underRadios" id="under1" value="option1" checked="" ng-click="selectUnder(3)">U3
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="underRadios" id="under2" value="option2" ng-click="selectUnder(4)">U4
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="underRadios" id="under3" value="option3" ng-click="selectUnder(5)">U5
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="underRadios" id="under4" value="option3" ng-click="selectUnder(6)">U6
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Select Option
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <div class="radio" ng-repeat="option in cur_week.options track by $index">
+                                <label>
+                                    <input type="radio" name="optionsRadios" ng-click="selectOption(option.name)">{{option.name}}
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>Stake Amount:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-money fa-fw"></i>
+                                    </div>
+                                    <input type="number" class="form-control" id = "input_stakeamt" value="1000">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="form-group pull-right">
+                            <button type="button" id="input_stakeamt" class="btn btn-success" ng-click="onStake()">Stake</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Group Setting
+                    </div>
+                    <div class="panel-body">
+                        <div id="divgroup_1">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="groupRadios" id="group1" value="option1" checked="" ng-click="onGroupSelect(1)">A :
+                                </label>
+                                <input class="group1" type="number" max="6" min="1" id="group_1" value="1" ng-model="group_1" ng-change="onChangeGroupValue(1)">
+                                <label></label>
+                            </div>
+                        </div>
+                        <div hidden id="divgroup_2">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="groupRadios" id="group2" ng-click="onGroupSelect(2)">B :
+                                </label>
+                                <input class="group2" type="number" max="6" min="1" id="group_2" value="1" ng-model="group_2" ng-change="onChangeGroupValue(2)">
+                                <label></label>
+                            </div>
+                        </div>
+                        <div hidden id="divgroup_3">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="groupRadios" id="group3" ng-click="onGroupSelect(3)">C :
+                                </label>
+                                <input class="group3" type="number" max="6" min="1" id="group_3" value="1" ng-model="group_3" ng-change="onChangeGroupValue(3)">
+                                <label></label>
+                            </div>
+                        </div>
+                        <div hidden id="divgroup_4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="groupRadios" id="group4" ng-click="onGroupSelect(4)">D :
+                                </label>
+                                <input class="group4" type="number" max="6" min="1" id="group_4" value="1" ng-model="group_4" ng-change="onChangeGroupValue(4)">
+                                <label></label>
+                            </div>
+                        </div>
+                        <div hidden id="divgroup_5">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="groupRadios" id="group5" ng-click="onGroupSelect(5)">E :
+                                </label>
+                                <input class="group5" type="number" max="6" min="1" id="group_5" value="1" ng-model="group_5" ng-change="onChangeGroupValue(5)">
+                                <label></label>
+                            </div>
+                        </div>
+                        <div hidden id="divgroup_6">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="groupRadios" id="group6" ng-click="onGroupSelect(6)">F :
+                                </label>
+                                <input class="group6" type="number" max="6" min="1" id="group_6" value="1" ng-model="group_6" ng-change="onChangeGroupValue(6)">
+                                <label></label>
+                            </div>
+                        </div>
+                        <div class="form-group pull-right">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success btn-circle" id="addGroup">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-circle" id="removeGroup">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title inline-block">
+                            Coupon Info
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Week Number:{{cur_week.week_no}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Game Start:
+                                <p class="no-margin">{{cur_week.start_at}}</p>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Game Close:
+                                <p class="no-margin">{{cur_week.close_at}}</p>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label>Min Stake:NGN 1</label>
+                            </div>
+                            <div>
+                                <label>Max Stake:NGN 500000</label>
+                            </div>
+                            <div>
+                                <label>Max. on3=NGN 25000</label>
+                            </div>
+                            <div>
+                                <label>Max. on4=NGN 7500</label>
+                            </div>
+                            <div>
+                                <label>Max. on5=NGN 2500</label>
+                            </div>
+                            <div>
+                                <label>Max. on6=NGN 1000</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="game in games track by $index">
+                    <div class="game-fixture {{data[game.game_no]}}" ng-click="togglebtn(game.game_no)" data-id="{{game.game_no}}" id="fixture_{{game.game_no}}">
+                        <label>
+                            {{game.game_no}}. {{game.home_team}} vs {{game.away_team}}</i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.panel -->
+
+</div>

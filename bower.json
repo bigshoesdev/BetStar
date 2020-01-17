@@ -1,0 +1,31 @@
+{
+  "name": "mvc-patten",
+  "description": "MVC pattern for MEAN app",
+  "main": "server.js",
+  "authors": [
+	"BlueROR815"
+  ],
+  "license": "ISC",
+  "keywords": [
+	"mvc",
+	"node",
+	"express",
+	"angular",
+	"mongodb",
+	"gulp"
+  ],
+  "dependencies": {
+	"bootstrap": "latest",
+	"angular": "latest",
+	"angular-route": "latest",
+	"angular-resource": "latest"
+  },
+  "homepage": "",
+  "ignore": [
+	"**/.*",
+	"node_modules",
+	"bower_components",
+	"test",
+	"tests"
+  ]
+}

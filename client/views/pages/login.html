@@ -1,0 +1,58 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="E-mail" name="email" type="text" ng-model="userInfo.user_email">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" name="password" type="password" ng-model="userInfo.user_password">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                </label>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+<!--                            <a class="btn btn-lg btn-success btn-block" ng-click="login()">Login</a>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="bg-black">
+    <div class="form-box" id="login-box">
+        <div class="header">Sign In</div>
+        <form id="authentication" autocomplete="on" novalidate="novalidate">
+            <div class="body bg-gray">
+                <div class="form-group">
+                    <input type="text" name="userid" class="form-control" placeholder="User ID or Email" ng-model="userInfo.user_nameoremail"
+                    />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password" ng-model="userInfo.user_password" />
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="remember_me" /> Remember me
+                </div>
+            </div>
+            <div class="footer">
+                <button id = "loginBtn" type="submit" class="btn bg-olive btn-block" style="color:#fff" ng-click="login()">Sign me in</button>
+
+                <p>
+                    <a ui-sref="forgot" style="color:#333333">I forgot my password</a>
+                </p>
+
+                <a ui-sref="register" class="text-center" style="color:#333333">Register a new membership</a>
+            </div>
+        </form>
+    </div>
+</div>

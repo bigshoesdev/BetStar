@@ -1,0 +1,91 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Fund your account</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row" style="padding: 15px;">
+
+        <div class="panel panel-default">
+            <div>
+                <div class="panel-heading">Deposit Request to admin</div>
+                <div class="panel-body">
+                    <div class="form-group text-center">
+                        <div class="alert alert-info">
+                            <p>Please make deposit to the one of the below banks once admin will approve it will be credited
+                                to your wallet</p>
+                        </div>
+                        <div class="address">
+                            <h3>Bank 1</h3>
+                            <p>
+                                <b>Bank:</b>Diamond bank plc</p>
+                            <p>
+                                <b>Account owner name:</b>Josystar company Nigeria Limited</p>
+                            <p>
+                                <b>Account number:</b>0023773782</p>
+                        </div>
+                        <div class="address">
+                            <h3>Bank 2</h3>
+                            <p>
+                                <b>Bank:</b>Eco Bank plc</p>
+                            <p>
+                                <b>Account owner name:</b>Josystar company Nigeria Limited</p>
+                            <p>
+                                <b>Account number:</b>2100203535</p>
+                        </div>
+                        <div class="address">
+                            <h3>Bank 3</h3>
+                            <p>
+                                <b>Bank:</b>Fidelity Bank plc</p>
+                            <p>
+                                <b>Account owner name:</b>Josystar company Nigeria Limited</p>
+                            <p>
+                                <b>Account number:</b>6017412655</p>
+                        </div>
+                    </div>
+                    <div class="form-group form_height">
+                        <label for="account_no" class="col-md-4 control-label">Account No</label>
+                        <div class="col-md-6">
+                            <input id="account_no" type="text" ng-model="fundModel.request_accountno" class="form-control" required="" name="account_no"
+                                value="" autofocus="">
+                        </div>
+                    </div>
+                    <div class="form-group form_height">
+                        <label for="bank_name" class="col-md-4 control-label">Bank Name</label>
+                        <div class="col-md-6">
+                            <input id="bank_name" type="text" ng-model="fundModel.request_bankname" class="form-control" required="" name="bank_name"
+                                value="" autofocus="">
+                        </div>
+                    </div>
+                    <div class="form-group form_height">
+                        <label for="amount" class="col-md-4 control-label">Request Type</label>
+                        <div class="col-md-6">
+                            <select class="form-control" id="request_type" name="request_type" ng-model="fundModel.request_type">
+                                <option value="Deposit">Deposit</option>
+                                <option value="Withdrawal">Withdrawal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form_height">
+                        <label for="amount" class="col-md-4 control-label">Amount</label>
+                        <div class="col-md-6">
+                            <input id="amount" type="text" class="form-control" required="" name="amount" value="" autofocus="" ng-model="fundModel.amount">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;" ng-click="onFund()">
+                                Request Deposit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.panel -->
+</div>

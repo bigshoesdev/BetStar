@@ -1,0 +1,328 @@
+<div class="col-lg-12">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					{{title}}
+				</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					<div class="row">
+						<div class="row" id="filter" name="filter" style="margin:auto">
+							<div class="form-group col-lg-{{filtersize[filtertype]}} col-md-4 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][0]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">Week</label>
+								<select ng-model="filter.weekno" class="form-control" ng-change="onfilterchanged(0)">
+									<option ng-repeat="week in $root.allweek">{{week}}</option>
+								</select>
+							</div>
+							<div class="form-group col-lg-{{filtersize[filtertype]}} col-md-4 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][1]">
+								<label ng-hide="samebetrepeatasc" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">Same Bet Repeated</label>
+								<input ng-hide="samebetrepeatasc" ng-model="filter.repeat" type="number" min=1 class="form-control" placeholder="Same Bets Repeated ..."
+								 ng-change="onfilterchanged(1)" />
+								<label ng-show="samebetrepeatasc" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">Display Order</label>
+								<select ng-show="samebetrepeatasc" ng-model="filter.repeatorder" class="form-control" ng-change="onfilterchanged(9)">
+									<option>Increasing</option>
+									<option>Decreasing</option>
+								</select>
+							</div>
+							<div class="form-group col-lg-{{filtersize[filtertype]}} col-md-4 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][2]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">Bet Status</label>
+								<select ng-model="filter.status" class="form-control" ng-change="onfilterchanged(2)">
+									<option>ALL</option>
+									<option>Active</option>
+									<option>Void</option>
+								</select>
+							</div>
+							<div class="form-group col-lg-{{filtersize[filtertype]}} col-md-4 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][3]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">TSN</label>
+								<input ng-model="filter.tsn" type="text" class="form-control" placeholder="Tick NO" ng-change="onfilterchanged(3)" />
+							</div>
+							<div class="form-group col-lg-{{filtersize[filtertype]}} col-md-4 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][4]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">AMT</label>
+								<input ng-model="filter.amt" type="text" class="form-control" placeholder="AMT" ng-change="onfilterchanged(4)" />
+							</div>
+							<div class="form-group col-lg-{{filtersize[filtertype]}} col-md-4 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][5]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">{{winlist?'Won Above':'Bet Above'}}</label>
+								<input ng-model="filter.bets_above" type="text" class="form-control" placeholder="{{winlist?'Won Above':'Bet Above'}}" ng-change="onfilterchanged(5)"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="dataTable_wrapper" ng-show="totalsummary">
+						<table class="table table-striped table-bordered table-hover" id="totalsummary" name="totalsummary">
+							<thead>
+								<tr>
+									<th>{{user_role == "staff"?"Staff":"Total"}} Sale</th>
+									<th>{{user_role == "staff"?"Staff Payable":"Total Payable to Agents"}}</th>
+									<th>{{user_role == "staff"?"Staff":"Total"}} Winning</th>
+									<th>Bal Agents</th>
+									<th>Bal Company</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<td>{{$root.totalsummary.total_sale | currency : '₦'}}</td>
+								<td>{{$root.totalsummary.total_payable | currency : '₦'}}</td>
+								<td class="winning">{{$root.totalsummary.total_winning | currency : '₦'}}</td>
+								<td>{{$root.totalsummary.bal_agent == '' ? '' : ($root.totalsummary.bal_agent | currency : '₦')}}</td>
+								<td>{{$root.totalsummary.bal_company == '' ? '' : ($root.totalsummary.bal_company | currency : '₦')}}</td>
+								<td class="{{$root.totalsummary.status}}">{{$root.totalsummary.status}}</td>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row">
+						<div class="row" id="filter" name="filter" style="margin:auto">
+							<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][9]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">Staff :</label>
+								<select ng-model="filter.staff" class="form-control" ng-change="onfilterchanged(10)">
+									<option>ALL</option>
+									<option ng-repeat="staff in $root.allstaff">{{staff}}</option>
+								</select>
+							</div>
+							<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][6]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">Agent :</label>
+								<select ng-model="filter.agent" class="form-control" ng-change="onfilterchanged(6)">
+									<option>ALL</option>
+									<option ng-repeat="agent in $root.allagent">{{agent}}</option>
+								</select>
+							</div>
+							<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][7]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">Terminal :</label>
+								<select ng-model="filter.terminal" class="form-control" ng-change="onfilterchanged(7)">
+									<option>ALL</option>
+									<option ng-repeat="terminal in $root.allterminal">{{terminal}}</option>
+								</select>
+							</div>
+							<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-show="filtershow[filtertype][8]">
+								<label style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">Options :</label>
+								<select ng-model="filter.option" class="form-control" ng-change="onfilterchanged(8)">
+									<option>ALL</option>
+									<option ng-repeat="option in $root.alloption">{{option}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="dataTable_wrapper" ng-show="usersummary">
+
+						<table class="table table-striped table-bordered table-hover" id="usersummary" name="usersummary">
+							<thead>
+								<tr>
+									<th>Sales</th>
+									<th>Total Payable</th>
+									<th>Win</th>
+									<th>Total Win</th>
+									<th>Bal Agent</th>
+									<th>Bal Company</th>
+									<th ng-hide="statushide">Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="usersale_0">
+									<td style="min-width: 130px">
+										<label ng-repeat="option in $root.usersummary.options track by $index">
+											{{option}} : {{$root.usersummary.sales[$index] | currency : '₦'}}
+										</label>
+									</td>
+									<td>{{$root.usersummary.total_sales | currency : '₦'}}</td>
+									<td style="min-width: 130px">
+										<label ng-repeat="option in $root.usersummary.options track by $index">
+											{{option}} : {{$root.usersummary.win[$index] | currency : '₦'}}
+										</label>
+									</td>
+									<td class="Win">{{$root.usersummary.total_win | currency : '₦'}}</td>
+									<td>{{$root.usersummary.status == 'green' ? '' : ($root.usersummary.bal_agent | currency : '₦')}}</td>
+									<td>{{$root.usersummary.status == 'red' ? '' : ($root.usersummary.bal_company | currency : '₦')}}</td>
+									<td ng-hide="statushide" class="{{$root.usersummary.status}}">{{$root.usersummary.status}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="dataTable_wrapper" ng-show="staffsummary">
+
+						<table class="table table-striped table-bordered table-hover" id="staffsummary" name="staffsummary">
+							<thead>
+								<tr>
+									<th>Staff</th>
+									<th>Sales</th>
+									<th>Payable</th>
+									<th>Win</th>
+									<th>Bal Agent</th>
+									<th>Bal Company</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="data in $root.staffsummary track by $index" id="staffsale_{{data.id}}">
+									<td>{{data.staff_id}}</td>
+									<td style="min-width: 130px">
+										<label ng-repeat="option in data.options track by $index">
+											{{option}} : {{data.sales[$index] | currency : '₦'}}
+										</label>
+									</td>
+									<td>{{data.payable | currency : '₦'}}</td>
+									<td class="Win">{{data.total_win | currency : '₦'}}</td>
+									<td>{{data.status == 'green' ? '' : (data.bal_agent | currency : '₦')}}</td>
+									<td>{{data.status == 'red' ? '' : (data.bal_company | currency : '₦')}}</td>
+									<td class="{{data.status}}">{{data.status}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="dataTable_wrapper" ng-show="agentsummary">
+
+						<table class="table table-striped table-bordered table-hover" id="agentsummary" name="agentsummary">
+							<thead>
+								<tr>
+									<th>Staff</th>
+									<th>Agent</th>
+									<th>Terminal NO</th>
+									<th>Sales</th>
+									<th>Payable</th>
+									<th>Total Payable</th>
+									<th>Win</th>
+									<th>Total Win</th>
+									<th>Bal Agent</th>
+									<th>Bal Company</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="data in $root.agentsummary track by $index" id="agentsale_{{data.id}}">
+									<td>{{data.staff_id}}</td>
+									<td>{{data.agent_id}}</td>
+									<td>{{data.terminal_no}}</td>
+									<td style="min-width: 130px">
+										<label ng-repeat="option in data.options track by $index">
+											{{option}} : {{data.sales[$index] | currency : '₦'}}
+										</label>
+									</td>
+									<td>
+										<label ng-repeat="data in data.payable track by $index">
+											{{data | currency : '₦'}}
+										</label>
+									</td>
+									<td>{{data.total_payable | currency : '₦'}}</td>
+									<td class="Win">{{data.win | currency : '₦'}}</td>
+									<td class="Win">{{data.total_win | currency : '₦'}}</td>
+									<td>{{data.status == 'green' ? '' : (data.bal_agent | currency : '₦')}}</td>
+									<td>{{data.status == 'red' ? '' : (data.bal_company | currency : '₦')}}</td>
+									<td class="{{data.status}}">{{data.status}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="dataTable_wrapper" ng-show="terminalsummary">
+
+						<table class="table table-striped table-bordered table-hover" id="terminalsummary" name="terminalsummary">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Terminal NO</th>
+									<th>Sales</th>
+									<th>Payable</th>
+									<th>Total Payable</th>
+									<th>Total Win</th>
+									<th>Bal Agent</th>
+									<th>Bal Company</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="data in $root.terminal_summary track by $index" id="terminalsale_{{data.id}}">
+									<td>{{data.agent_id}}</td>
+									<td>{{data.terminal_no}}</td>
+									<td style="min-width: 130px">
+										<label ng-repeat="option in data.options track by $index">
+											{{option}} : {{data.sales[$index] | currency : '₦'}}
+										</label>
+									</td>
+									<td>
+										<label ng-repeat="data in data.payable track by $index">
+											{{data | currency : '₦'}}
+										</label>
+									</td>
+									<td>{{data.total_payable | currency : '₦'}}</td>
+									<td class="Win">{{data.total_win | currency : '₦'}}</td>
+									<td>{{data.status == 'green' ? '' : (data.bal_agent | currency : '₦')}}</td>
+									<td>{{data.status == 'red' ? '' : (data.bal_company | currency : '₦')}}</td>
+									<td class="{{data.status}}">{{data.status}}</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+					<div class="dataTable_wrapper" ng-show={{betsummary}}>
+
+						<table class="table table-striped table-bordered table-hover" id="betsummary" name="betsummary">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Bet ID</th>
+									<th>Player</th>
+									<th>Option</th>
+									<th>Under</th>
+									<th ng-hide='true'>Week</th>
+									<th>Game List</th>
+									<th ng-hide="removescorelist">Score List</th>
+									<th>APL</th>
+									<th>Amount Staked</th>
+									<th>Status</th>
+									<th ng-hide="winlist || removescorelist">Win Result</th>
+									<th ng-hide="removescorelist">Winning</th>
+									<th>TSN</th>
+									<th>TerminalID</th>
+									<th>Agent</th>
+									<th>Bet Time</th>
+									<th>same bet</th>
+									<th>odd</th>
+									<th>amt</th>
+									<th ng-show="voidenable">Void</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="data in $root.betsummary track by $index" id="bet_{{data.no}}" data-id={{data._id}}>
+									<td>{{$index + 1}}</td>
+									<td>{{data.bet_id}}</td>
+									<td>{{data.player_id}}</td>
+									<td>{{data.option}}</td>
+									<td>{{data.under.toLocaleString()}}</td>
+									<td ng-hide="true">{{data.week}}</td>
+									<td>{{data.gamelist}}</td>
+									<td ng-hide="removescorelist">{{data.scorelist}}</td>
+									<td>{{data.apl | currency : '₦'}}</td>
+									<td>{{data.stake_amount | currency : '₦'}}</td>
+									<td>{{data.status}}</td>
+									<td ng-hide="winlist || removescorelist">{{data.win_result}}</td>
+									<td class="Win" ng-hide="removescorelist">{{data.win_result=='Win'?(data.won_amount | currency : '₦'):''}}</td>
+									<td>{{data.ticket_no}}</td>
+									<td>{{data.terminal_id}}</td>
+									<td>{{data.agent_id}}</td>
+									<td>{{data.bet_time}}</td>
+									<td>{{data.repeat}}</td>
+									<td>{{data.won_amount}}</td>
+									<td>{{data.stake_amount}}</td>
+									<td ng-show="voidenable">
+										<a class="{{data.status == 'Void' ? 'unvoid' : 'void'}}" href="javascript:;">{{data.status == 'Void' ? 'Unvoid' : 'Void'}}</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+</div>

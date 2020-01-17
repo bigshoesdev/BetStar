@@ -1,0 +1,49 @@
+<ul class="nav navbar-top-links navbar-right">
+    <li>
+        <label id="currentTime" style="margin-left:20px;"></label>
+        <!-- /.dropdown-messages -->
+    </li>
+    <li class="dropdown" ng-show="user_role == 'admin'">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-envelope fa-fw"></i>
+            <span class="label label-success" ng-show="$root.deposit_requests.length > 0">{{$root.deposit_requests.length}}</span>
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-messages">
+            <li ng-repeat="request in $root.deposit_requests track by $index" ng-show="$index < 3">
+                <a ui-sref="bet.admin_request">
+                    <div>
+                        <strong>{{request.requester}}</strong>
+                        <span class="pull-right text-muted">
+                            <em>{{request.created_at}}</em>
+                        </span>
+                    </div>
+                    <div>#{{request.request_amount}}</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" ui-sref="bet.admin_request">
+                    <strong>All Requests</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-messages -->
+    </li>
+
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user fa-fw"></i>
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+            <li>
+                <a ng-click="logout()">
+                    <i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </li>
+        </ul>
+        <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+</ul>
